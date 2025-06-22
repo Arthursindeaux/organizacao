@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Organizador de Objetivos</title>
+    <link rel="stylesheet" href="customizacao.css">
+</head>
+
+<body>
+
+    <h2>Quais são os seus planos?</h2>
+
+    <div class="button-container">
+    <button class="btn-daily" onclick="openModal()">Daily Tasks</button>
+    <button class="btn-week" onclick="openModal()">Week Tasks</button>
+</div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Add New Task</h3>
+
+        <input type="text" placeholder="Nome da Tarefa"><br><br>
+
+        <label>Priority Task:</label><br><br>
+
+        <div class="priority-options">
+            <label class="priority-Normal">
+                <input type="radio" name="prioridade" value="Normal">
+                Regular
+            </label>
+
+            <label class="priority-importante">
+                <input type="radio" name="prioridade" value="Importante">
+                Important
+            </label>
+
+            <label class="priority-crucial">
+                <input type="radio" name="prioridade" value="Urgente">
+                Crucial
+            </label>
+        </div>
+
+        <br>
+        <label>Tempo Estimado:</label><br><br>
+
+        <div class="Time-options">
+            <label class="quinze-minutos">
+                <input type="radio" name="tempo" value="quinze">
+                15<br>Minutos
+            </label>
+        </div>
+        <button onclick="alert('Tarefa adicionada!')">Adicionar Tarefa</button>
+    </div>
+</div>
+
+    <script src="programacao.js"></script>
+</body>
+</html>
+
