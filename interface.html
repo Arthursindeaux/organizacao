@@ -8,18 +8,17 @@
 
 <body>
 
-    <h2>Quais são os seus planos?</h2>
+    <h2>Vamos traçar suas metas de hoje</h2>
 
     <div class="button-container">
-    <button class="btn-daily" onclick="openModal()">Daily Tasks</button>
-    <button class="btn-week" onclick="openModal()">Week Tasks</button>
+    <button class="btn-daily" onclick="openModal()">ADD Daily Tasks</button>
 </div>
 
     <!-- Modal -->
     <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3>Add New Task</h3>
+        <h3>Add New Task:</h3>
 
         <input type="text" placeholder="Nome da Tarefa"><br><br>
 
@@ -43,15 +42,23 @@
         </div>
 
         <br>
-        <label>Tempo Estimado:</label><br><br>
+        <label>Tempo Estimado:(em minutos)</label><br><br>
 
         <div class="Time-options">
             <label class="quinze-minutos">
                 <input type="radio" name="tempo" value="quinze">
-                15<br>Minutos
+                15
+            </label>
+            <label class="trinta-minutos">
+                <input type="radio" name="tempo" value="trinta">
+                30
+            </label>
+            <label class="sessenta-minutos">
+                <input type="radio" name="tempo" value="sessenta">
+                60
             </label>
         </div>
-        <button onclick="alert('Tarefa adicionada!')">Adicionar Tarefa</button>
+       <button class="add-task-btn" onclick="alert('Tarefa adicionada!')">Add task</button>
     </div>
 </div>
 
