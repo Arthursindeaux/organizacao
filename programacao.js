@@ -37,11 +37,15 @@ function time_sem_opcao_marcada(time){
     return true;
 }
 
+function recebendo_dados_da_task(){
+    let taskName = document.querySelector('input[placeholder="Nome da Tarefa"]').value;
+    let priority = document.querySelector('input[name="prioridade"]:checked');
+    let time = document.querySelector('input[name="tempo"]:checked');
 
+    return  {taskName,priority,time}
+}
 function addTask() {
-    const taskName = document.querySelector('input[placeholder="Nome da Tarefa"]').value;
-    const priority = document.querySelector('input[name="prioridade"]:checked');
-    const time = document.querySelector('input[name="tempo"]:checked');
+     let = {taskName,priority,time} = recebendo_dados_da_task()
 
     if (!task_sem_nome(taskName)) {
         return;
