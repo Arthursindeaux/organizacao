@@ -64,6 +64,17 @@ function definindo_Cor_Postit(priorityValue){
         return 'priority-crucial';
     } 
 }
+function criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue){
+    const taskBoard = document.getElementById('task-board');
+    const postIt = document.createElement('div');
+    postIt.className = `post-it ${priorityClass}`;
+    postIt.innerHTML = `
+        <strong>Tarefa:</strong> ${taskName}<br>
+        <strong>Prioridade:</strong> ${priorityValue}<br>
+        <strong>Tempo:</strong> ${tempo_Text_Final}`;
+    taskBoard.appendChild(postIt);
+
+    }
 function addTask() {
     let { taskName, priority, tempo } = recebendo_dados_da_task();
 
@@ -73,20 +84,9 @@ function addTask() {
 
     let tempo_Text_Final = filtrando_nome_do_tempo(tempo);
     let priorityValue = priority.value;
-
-    
     let priorityClass = definindo_Cor_Postit(priorityValue);
-    
-    const taskBoard = document.getElementById('task-board');
-    const postIt = document.createElement('div');
-    postIt.className = `post-it ${priorityClass}`;
-    postIt.innerHTML = `
-        <strong>Tarefa:</strong> ${taskName}<br>
-        <strong>Prioridade:</strong> ${priorityValue}<br>
-        <strong>Tempo:</strong> ${tempo_Text_Final}
-    `;
 
-    taskBoard.appendChild(postIt);
+    PostIt_Final = criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue)
 
     // Limpa os campos depois
     document.querySelector('input[placeholder="Nome da Tarefa"]').value = '';
