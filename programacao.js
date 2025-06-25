@@ -54,28 +54,29 @@ function filtrando_nome_do_tempo(tempo){
             return '60 minutos';
     } 
 }
+
+function definindo_Cor_Postit(priorityValue){
+    if (priorityValue === 'Normal') {
+        return 'priority-normal';
+    } else if (priorityValue === 'Importante') {
+        return 'priority-importante';
+    } else if (priorityValue === 'Urgente') {
+        return 'priority-crucial';
+    } 
+}
 function addTask() {
-    const { taskName, priority, tempo } = recebendo_dados_da_task();
+    let { taskName, priority, tempo } = recebendo_dados_da_task();
 
     if (!task_sem_nome(taskName)) return;
     if (!priority_sem_opcao_marcada(priority)) return;
     if (!time_sem_opcao_marcada(tempo)) return;
 
-    const tempo_Text_Final = filtrando_nome_do_tempo(tempo);
-    const priorityValue = priority.value;
+    let tempo_Text_Final = filtrando_nome_do_tempo(tempo);
+    let priorityValue = priority.value;
 
-    // Definindo a classe CSS de acordo com a prioridade
-    let priorityClass = '';
-    if (priorityValue === 'Normal') {
-        priorityClass = 'priority-normal';
-    } else if (priorityValue === 'Importante') {
-        priorityClass = 'priority-importante';
-    } else if (priorityValue === 'Urgente') {
-        priorityClass = 'priority-crucial';
-    } else {
-        priorityClass = 'priority-none';  // Caso não defina prioridade
-    }
-
+    
+    let priorityClass = definindo_Cor_Postit(priorityValue);
+    
     const taskBoard = document.getElementById('task-board');
     const postIt = document.createElement('div');
     postIt.className = `post-it ${priorityClass}`;
