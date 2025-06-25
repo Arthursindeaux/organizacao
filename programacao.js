@@ -9,21 +9,50 @@ function closeModal() {
 window.onclick = function(event) {
     const modal = document.getElementById("myModal");
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal();
     }
 }
+
+function task_sem_nome(taskName){
+    if (!taskName.trim()) { 
+        alert('Você esqueceu de adicionar um nome para sua task !');
+        return false;
+    }
+    return true;
+}
+
+function priority_sem_opcao_marcada(priority){
+    if (!priority) {
+        alert("Você esqueceu de colocar a prioridade da sua task !")
+        return false
+    }
+    return true;
+}
+
+function time_sem_opcao_marcada(time){
+    if (!time) {
+        alert("Você esqueceu de colocar um tempo estimado para sua task ! ")
+        return false;
+    }
+    return true;
+}
+
 
 function addTask() {
     const taskName = document.querySelector('input[placeholder="Nome da Tarefa"]').value;
     const priority = document.querySelector('input[name="prioridade"]:checked');
     const time = document.querySelector('input[name="tempo"]:checked');
 
-    // Evita criar task sem nome
-    if (!taskName.trim()) {
-        alert('Por favor, insira um nome para a tarefa.');
+    if (!task_sem_nome(taskName)) {
         return;
     }
-
+    if (!priority_sem_opcao_marcada(priority)){
+        return
+    }
+    if (!time_sem_opcao_marcada(time)){
+        return;
+    }
+    
     const priorityValue = priority ? priority.value : 'Sem prioridade';
     let timeText = '';
     if (time) {
