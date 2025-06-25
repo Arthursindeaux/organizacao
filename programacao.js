@@ -12,9 +12,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-function closeModal() {
-    document.getElementById('myModal').style.display = 'none';
-}
 
 function addTask() {
     const taskName = document.querySelector('input[placeholder="Nome da Tarefa"]').value;
@@ -67,3 +64,4 @@ function addTask() {
 
     closeModal();
 }
+
