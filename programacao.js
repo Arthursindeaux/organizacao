@@ -75,6 +75,12 @@ function criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue){
     taskBoard.appendChild(postIt);
 
     }
+function limpar_Dados_da_Task_Antiga(priority,tempo){
+    document.querySelector('input[placeholder="Nome da Tarefa"]').value = '';
+    if (priority) priority.checked = false;
+    if (tempo) tempo.checked = false;
+}
+
 function addTask() {
     let { taskName, priority, tempo } = recebendo_dados_da_task();
 
@@ -86,13 +92,11 @@ function addTask() {
     let priorityValue = priority.value;
     let priorityClass = definindo_Cor_Postit(priorityValue);
 
-    PostIt_Final = criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue)
+    PostIt_Final = criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue);
 
-    // Limpa os campos depois
-    document.querySelector('input[placeholder="Nome da Tarefa"]').value = '';
-    if (priority) priority.checked = false;
-    if (tempo) tempo.checked = false;
+    limpar_Dados_da_Task_Antiga(priority, tempo);
 
     closeModal();
 }
+
 
