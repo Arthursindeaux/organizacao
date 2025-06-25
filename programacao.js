@@ -29,8 +29,8 @@ function priority_sem_opcao_marcada(priority){
     return true;
 }
 
-function time_sem_opcao_marcada(time){
-    if (!time) {
+function time_sem_opcao_marcada(tempo){
+    if (!tempo) {
         alert("Você esqueceu de colocar um tempo estimado para sua task ! ")
         return false;
     }
@@ -40,32 +40,29 @@ function time_sem_opcao_marcada(time){
 function recebendo_dados_da_task(){
     let taskName = document.querySelector('input[placeholder="Nome da Tarefa"]').value;
     let priority = document.querySelector('input[name="prioridade"]:checked');
-    let time = document.querySelector('input[name="tempo"]:checked');
+    let tempo = document.querySelector('input[name="tempo"]:checked');
 
-    return  {taskName,priority,time}
+    return  {taskName,priority,tempo}
+}
+function filtrando_nome_do_tempo(tempo){
+    if (tempo) {
+        if (tempo.value === 'quinze') 
+            return '15 minutos';
+        else if (tempo.value === 'trinta') 
+            return '30 minutos';
+        else if (tempo.value === 'sessenta') 
+            return '60 minutos';
+    } 
 }
 function addTask() {
-     let = {taskName,priority,time} = recebendo_dados_da_task()
+    const { taskName, priority, tempo } = recebendo_dados_da_task();
 
-    if (!task_sem_nome(taskName)) {
-        return;
-    }
-    if (!priority_sem_opcao_marcada(priority)){
-        return
-    }
-    if (!time_sem_opcao_marcada(time)){
-        return;
-    }
-    
-    const priorityValue = priority ? priority.value : 'Sem prioridade';
-    let timeText = '';
-    if (time) {
-        if (time.value === 'quinze') timeText = '15 minutos';
-        else if (time.value === 'trinta') timeText = '30 minutos';
-        else if (time.value === 'sessenta') timeText = '60 minutos';
-    } else {
-        timeText = 'Não definido';
-    }
+    if (!task_sem_nome(taskName)) return;
+    if (!priority_sem_opcao_marcada(priority)) return;
+    if (!time_sem_opcao_marcada(tempo)) return;
+
+    const tempo_Text_Final = filtrando_nome_do_tempo(tempo);
+    const priorityValue = priority.value;
 
     // Definindo a classe CSS de acordo com a prioridade
     let priorityClass = '';
@@ -85,7 +82,7 @@ function addTask() {
     postIt.innerHTML = `
         <strong>Tarefa:</strong> ${taskName}<br>
         <strong>Prioridade:</strong> ${priorityValue}<br>
-        <strong>Tempo:</strong> ${timeText}
+        <strong>Tempo:</strong> ${tempo_Text_Final}
     `;
 
     taskBoard.appendChild(postIt);
@@ -93,7 +90,7 @@ function addTask() {
     // Limpa os campos depois
     document.querySelector('input[placeholder="Nome da Tarefa"]').value = '';
     if (priority) priority.checked = false;
-    if (time) time.checked = false;
+    if (tempo) tempo.checked = false;
 
     closeModal();
 }
