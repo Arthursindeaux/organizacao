@@ -11,7 +11,7 @@ h2 {
     margin-bottom: 30px;
 }
 
-.button-container {
+.button-add-daily-tasks-layoyt-space {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -20,7 +20,7 @@ h2 {
     padding-top: 15px;
 }
 
-.btn-daily {
+.btn-add-daily-tasks {
     background-color: #4CAF50;  
     color: white;
     padding: 15px 25px;
@@ -31,7 +31,7 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-.btn-daily:hover {
+.btn-add-daily-tasks {
     background-color: #45a049;
 }
 
