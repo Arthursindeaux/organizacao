@@ -161,16 +161,38 @@ input[type="text"] {
     font-weight: bold;
     background-color:#D3D3D3;
 }
-.add-task-btn{
-    display: flex;
+.add-task-btn {
+    display: inline-flex;
     align-items: center;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-weight: bold;
-    background-color: #4169E1;
+    justify-content: center;
+
+    padding: 10px 20px;
     margin-top: 20px;
 
+    background-color: #4169E1; /* Royal Blue */
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Segoe UI", sans-serif;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.add-task-btn:hover {
+    background-color: #365acb; /* darker on hover */
+    transform: translateY(-2px);
+}
+
+.add-task-btn:active {
+    background-color: #2e4cb1; /* even darker on click */
+    transform: translateY(0);
+}
+
 #task-board {
     display: flex;
     flex-wrap: wrap;
