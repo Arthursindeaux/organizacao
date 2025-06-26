@@ -88,7 +88,6 @@ input[type="text"] {
 .priority-button-Normal {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
     border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
@@ -100,7 +99,6 @@ input[type="text"] {
 .priority-button-importante {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
     border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
@@ -112,7 +110,6 @@ input[type="text"] {
 .priority-button-crucial {
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
     border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
@@ -120,6 +117,7 @@ input[type="text"] {
     font-weight: bold;
     background-color: #DC3545;
 }
+
 .Time-options{
     display: flex;
     justify-content: center;
@@ -128,6 +126,7 @@ input[type="text"] {
     margin-top: -10px;
     margin-right: 280px;
 }
+
 .quinze-minutos{
     display: flex;
     align-items: center;
@@ -139,6 +138,7 @@ input[type="text"] {
     font-weight: bold;
     background-color: #D3D3D3;
 }
+
 .trinta-minutos{
     display: flex;
     align-items: center;
@@ -150,6 +150,7 @@ input[type="text"] {
     font-weight: bold;
     background-color:#D3D3D3;
 }
+
 .sessenta-minutos{
     display: flex;
     align-items: center;
@@ -161,35 +162,32 @@ input[type="text"] {
     font-weight: bold;
     background-color:#D3D3D3;
 }
+
 .add-task-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: 10px 20px;
     margin-top: 20px;
-
-    background-color: #4169E1; /* Royal Blue */
+    background-color: #4169E1; 
     color: white;
     font-size: 15px;
     font-weight: 600;
     font-family: "Segoe UI", sans-serif;
-
     border: none;
     border-radius: 8px;
     cursor: pointer;
-
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .add-task-btn:hover {
-    background-color: #365acb; /* darker on hover */
+    background-color: #365acb; 
     transform: translateY(-2px);
 }
 
 .add-task-btn:active {
-    background-color: #2e4cb1; /* even darker on click */
+    background-color: #2e4cb1; 
     transform: translateY(0);
 }
 
@@ -225,4 +223,32 @@ input[type="text"] {
 
 .post-it.priority-crucial {
     background-color: #FF0000;
+}
+
+.timer {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.play-button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.play-button:disabled {
+    background-color: #aaa;
+    cursor: default;
 }

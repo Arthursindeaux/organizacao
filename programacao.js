@@ -44,6 +44,7 @@ function recebendo_dados_da_task(){
 
     return  {taskName,priority,tempo}
 }
+
 function filtrando_nome_do_tempo(tempo){
     if (tempo) {
         if (tempo.value === 'quinze') 
@@ -64,17 +65,39 @@ function definindo_Cor_Postit(priorityValue){
         return 'priority-crucial';
     } 
 }
-function criando_Postit(priorityClass,taskName,tempo_Text_Final,priorityValue){
+
+function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue) {
     const taskBoard = document.getElementById('task-board');
     const postIt = document.createElement('div');
     postIt.className = `post-it ${priorityClass}`;
+
+    const minutes = parseInt(tempo_Text_Final.split(" ")[0]);
+
     postIt.innerHTML = `
         <strong>Tarefa:</strong> ${taskName}<br>
         <strong>Prioridade:</strong> ${priorityValue}<br>
-        <strong>Tempo:</strong> ${tempo_Text_Final}`;
+        <strong>Tempo:</strong> ${tempo_Text_Final}<br>
+        <div class="timer">${minutes}:00</div>
+        <button class="play-button">▶ Iniciar</button>
+    `;
+
     taskBoard.appendChild(postIt);
 
-    }
+    const timerElement = postIt.querySelector('.timer');
+    const playButton = postIt.querySelector('.play-button');
+
+    let countdownStarted = false;
+
+    playButton.addEventListener('click', () => {
+        if (!countdownStarted) {
+            startCountdown(timerElement, minutes);
+            countdownStarted = true;
+            playButton.disabled = true;
+            playButton.textContent = 'Em andamento';
+        }
+    });
+}
+
 function limpar_Dados_da_Task_Antiga(priority,tempo){
     document.querySelector('input[placeholder="Nome da Tarefa"]').value = '';
     if (priority) priority.checked = false;
@@ -99,3 +122,20 @@ function addTask() {
     closeModal();
 }
 
+function startCountdown(timerElement, minutes) {
+    let totalSeconds = minutes * 60;
+
+    const interval = setInterval(() => {
+        const min = Math.floor(totalSeconds / 60);
+        const sec = totalSeconds % 60;
+        timerElement.textContent = `${min}:${sec < 10 ? '0' + sec : sec}`;
+
+        if (totalSeconds <= 0) {
+            clearInterval(interval);
+            timerElement.textContent = 'Tempo esgotado!';
+            timerElement.style.color = 'red';
+        }
+
+        totalSeconds--;
+    }, 1000);
+}
