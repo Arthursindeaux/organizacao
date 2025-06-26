@@ -99,4 +99,3 @@ function addTask() {
     closeModal();
 }
 
-
