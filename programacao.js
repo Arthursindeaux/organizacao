@@ -84,6 +84,7 @@ function html_dinamico_postit(taskName, priorityValue, tempo_Text_Final, minutes
         <strong>Tempo:</strong> ${tempo_Text_Final}<br>
         <div class="timer">${minutes}:00</div>
         <button class="play-button">▶ Iniciar</button>
+        <button class="complete-btn">✅ Concluido</button>
     `;
 }
 
@@ -103,6 +104,18 @@ function Iniciar_cronometro_quando_clicado(playButton, timerElement, minutes){
     });
 }
 
+function botao_task_concluida(postIt){
+    const completeBtn = postIt.querySelector('.complete-btn');
+    if (completeBtn) {
+        completeBtn.addEventListener('click', () => {
+            postIt.style.opacity = '0.5';
+            postIt.style.textDecoration = 'line-through';
+            completeBtn.disabled = true;
+             });
+    }
+}
+
+
 function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue) {
     const taskBoard = document.getElementById('task-board');
     const postIt = criando_elemento_visual(priorityClass)
@@ -117,6 +130,8 @@ function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue
     const playButton = postIt.querySelector('.play-button');
 
     Iniciar_cronometro_quando_clicado(playButton, timerElement, minutes)
+
+    botao_task_concluida(postIt);
 }
 
 function limpar_Dados_da_Task_Antiga(priority,tempo){
