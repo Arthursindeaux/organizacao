@@ -143,19 +143,33 @@ function addTask() {
     closeModal();
 }
 
+function tempo_em_segundos(minutes){
+    return minutes * 60;
+}
+
+function quanto_tempo_falta_para_acabar(totalSeconds) {
+    const min = Math.floor(totalSeconds / 60);
+    const sec = totalSeconds % 60;
+    return { min, sec };
+}
+
+function tempo_da_task_acabado(totalSeconds,interval,timerElement){
+    if (totalSeconds <= 0) {
+        clearInterval(interval);
+        timerElement.textContent = 'Tempo esgotado!';
+        timerElement.style.color = 'red';
+    }
+}
+
 function startCountdown(timerElement, minutes) {
-    let totalSeconds = minutes * 60;
+    let totalSeconds = tempo_em_segundos(minutes);
 
     const interval = setInterval(() => {
-        const min = Math.floor(totalSeconds / 60);
-        const sec = totalSeconds % 60;
+        let {min,sec} = quanto_tempo_falta_para_acabar(totalSeconds)
+
         timerElement.textContent = `${min}:${sec < 10 ? '0' + sec : sec}`;
 
-        if (totalSeconds <= 0) {
-            clearInterval(interval);
-            timerElement.textContent = 'Tempo esgotado!';
-            timerElement.style.color = 'red';
-        }
+        tempo_da_task_acabado(totalSeconds,interval,timerElement)
 
         totalSeconds--;
     }, 1000);
