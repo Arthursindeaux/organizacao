@@ -66,28 +66,33 @@ function definindo_Cor_Postit(priorityValue){
     } 
 }
 
-function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue) {
-    const taskBoard = document.getElementById('task-board');
+function criando_elemento_visual(priorityClass) {
     const postIt = document.createElement('div');
     postIt.className = `post-it ${priorityClass}`;
+    return postIt;
+}
 
+function extraindo_minutagem_task(tempo_Text_Final){
     const minutes = parseInt(tempo_Text_Final.split(" ")[0]);
+    return minutes
+}
 
-    postIt.innerHTML = `
+function html_dinamico_postit(taskName, priorityValue, tempo_Text_Final, minutes) {
+    return `
         <strong>Tarefa:</strong> ${taskName}<br>
         <strong>Prioridade:</strong> ${priorityValue}<br>
         <strong>Tempo:</strong> ${tempo_Text_Final}<br>
         <div class="timer">${minutes}:00</div>
         <button class="play-button">▶ Iniciar</button>
     `;
+}
 
+function inserir_postit_tela(taskBoard,postIt){
     taskBoard.appendChild(postIt);
+}
 
-    const timerElement = postIt.querySelector('.timer');
-    const playButton = postIt.querySelector('.play-button');
-
+function Iniciar_cronometro_quando_clicado(playButton, timerElement, minutes){
     let countdownStarted = false;
-
     playButton.addEventListener('click', () => {
         if (!countdownStarted) {
             startCountdown(timerElement, minutes);
@@ -96,6 +101,22 @@ function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue
             playButton.textContent = 'Em andamento';
         }
     });
+}
+
+function criando_Postit(priorityClass, taskName, tempo_Text_Final, priorityValue) {
+    const taskBoard = document.getElementById('task-board');
+    const postIt = criando_elemento_visual(priorityClass)
+
+    const minutes =  extraindo_minutagem_task(tempo_Text_Final)
+
+    postIt.innerHTML = html_dinamico_postit(taskName, priorityValue, tempo_Text_Final, minutes)
+
+    inserir_postit_tela(taskBoard,postIt)
+
+    const timerElement = postIt.querySelector('.timer');
+    const playButton = postIt.querySelector('.play-button');
+
+    Iniciar_cronometro_quando_clicado(playButton, timerElement, minutes)
 }
 
 function limpar_Dados_da_Task_Antiga(priority,tempo){
