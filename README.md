@@ -1,4 +1,4 @@
-Organização é um projeto pessoal desenvolvido com o objetivo de melhorar o aproveitamento do dia a dia. A ideia é ajudar a manter o foco nas atividades que realmente importam, evitando a procrastinação e promovendo uma rotina mais equilibrada entre estudos, exercícios físicos e lazer — sempre com tempo programado para maximizar a produtividade.
+Esse é um projeto pessoal desenvolvido com o objetivo de melhorar o aproveitamento do dia a dia. A ideia é ajudar a manter o foco nas atividades que realmente importam, evitando a procrastinação e promovendo uma rotina mais equilibrada entre estudos, exercícios físicos e lazer — sempre com tempo programado para maximizar a produtividade.
 
 Sobre o projeto:
 
@@ -14,5 +14,5 @@ Além disso, o sistema conta com um botão de "Tarefa concluída", que ajuda a o
 
 Objetivo:
 
-A proposta do Organização é simples: dividir o dia em blocos focados e gerenciáveis, com tarefas bem definidas. Acreditamos que fracionar o trabalho em partes menores e priorizadas torna a rotina mais leve e produtiva.
+A proposta é simples: dividir o dia em blocos focados e gerenciáveis, com tarefas bem definidas. Acreditamos que fracionar o trabalho em partes menores e priorizadas torna a rotina mais leve e produtiva.
 
